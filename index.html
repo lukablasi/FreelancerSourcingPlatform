@@ -1,15 +1,140 @@
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
   <title>FishEye</title>
   <meta name="description" content="Find the best freelance photographers with us!">
 
-  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
-  <script src="js/scripts.js"></script>
+
+  <header role='banner'>
+    
+    <a class='logo' href='index.html'  tabindex="7"><img alt='Fisheye home page' src='/photos/logo.jpg'></a>
+    <nav aria-label='photographer categories'>
+      <ul class='tag-selector'>
+        <li aria-label='tag portrait' class='category-title' id='portrait-tag'>#Portrait</li>
+        <li aria-label='tag art' class='category-title' id='art-tag'>#Art</li>
+        <li aria-label='tag fashion' class='category-title' id='fashion-tag'>#Fashion</li>
+        <li aria-label='tag architecture' class='category-title' id='architecture-tag'>#Architecture</li>
+        <li aria-label='tag travel' class='category-title' id='travel-tag'>#Travel</li>
+        <li aria-label='tag sport' class='category-title' id='sport-tag'>#Sport</li>
+        <li aria-label='tag animals' class='category-title' id='animals-tag'>#Animals</li>
+        <li aria-label='tag events' class='category-title' id='events-tag'>#Events</li>
+      </ul>
+    </nav>
+    
+  </header>
+  <main>
+    <div class='h1-container'>
+    <h1>Our Photographers</h1>
+    </div>
+    <div class='portrait-container'>
+    <div class='portrait portrait-tag events-tag travel-tag animals-tag'>
+      <a href='#' alt='' aria-label='Mini Keel' tabindex="1">
+        <img src='/photos/Photographers ID Photos/MimiKeel.jpg'>
+        <h2>Mimi Keel</h2>
+        <div class='skip'>Skip to content</div>
+      </a>
+      <p class='pho-local'>London, UK</p>
+      <p class='pho-phrase'>Finding beauty in everyday things</p>
+      <p class='pho-rate'>$400/day</p>
+      <ul class='pho-tags'>
+        <li aria-label='tag portrait'>#portrait</li>
+        <li aria-label='tag events'>#events</li>
+        <li aria-label='tag travel'>#travel</li>
+        <li aria-label='tag animals'>#animals</li>
+      </ul>
+    </div>
+
+    <div class='portrait sport-tag architecture-tag'>
+      <a href='' alt='' aria-label='Ellie-Rose Wilkens' tabindex="2">
+        <img src='/photos/Photographers ID Photos/EllieRoseWilkens.jpg'>
+        <h2>Ellie-Rose Wilkens</h2>
+        <div class='skip'>Skip to content</div>
+      </a>
+      <p class='pho-local'>Paris, France</p>
+      <p class='pho-phrase'>Capturing Complex Composition</p>
+      <p class='pho-rate'>$250/day</p>
+      <ul class='pho-tags'>
+        <li aria-label='tag sports'>#sports</li>
+        <li aria-label='tag architecture'>#architecture</li>
+      </ul>
+    </div>
+
+    <div class='portrait art-tag fashion-tag events-tag'>
+      <a href='' alt='' aria-label='Tracy Galindo' tabindex="3">
+        <img src='/photos/Photographers ID Photos/TracyGalindo.jpg'>
+        <h2>Tracy Galindo</h2>
+        <div class='skip'>Skip to content</div>
+      </a>
+      <p class='pho-local'>Montreal, Canada</p>
+      <p class='pho-phrase'>Freelance photographer</p>
+      <p class='pho-rate'>$500/day</p>
+      <ul class='pho-tags'>
+        <li aria-label='tag art'>#art</li>
+        <li aria-label='tag fashion'>#fashion</li>
+        <li aria-label='tag events'>#events</li>
+      </ul>
+    </div>
+
+    <div class='portrait travel-tag portrait-tag'>
+      <a href='' alt='' aria-label='Nabeel Bradford' tabindex="4">
+        <img src='/photos/Photographers ID Photos/NabeelBradford.jpg'>
+        <h2>Nabeel Bradford</h2>
+        <div class='skip'>Skip to content</div>
+      </a>
+      <p class='pho-local'>Mexico City, Mexico</p>
+      <p class='pho-phrase'>Always moving forward</p>
+      <p class='pho-rate'>$350/day</p>
+      <ul class='pho-tags'>
+        <li aria-label='tag travel'>#travel</li>
+        <li aria-label='tag portraits'>#portraits</li>
+      </ul>
+    </div>
+
+    <div class='portrait sport-tag fashion-tag events-tag animals-tag'>
+      <a href='' alt='' aria-label='Rhode Dubois' tabindex="5">
+        <img src='/photos/Photographers ID Photos/RhodeDubois.jpg'>
+        <h2>Rhode Dubois</h2>
+        <div class='skip'>Skip to content</div>
+      </a>
+      <p class='pho-local'>Barcelona, Spain</p>
+      <p class='pho-phrase'>Making memories</p>
+      <p class='pho-rate'>$375/day</p>
+      <ul class='pho-tags'>
+        <li aria-label='tag sport'>#sport</li>
+        <li aria-label='tag fashion'>#fashion</li>
+        <li aria-label='tag events'>#events</li>
+        <li aria-label='tag animals'>#animals</li>
+      </ul>
+    </div>
+
+    <div class='portrait travel-tag architecture-tag'>
+      <a href='' alt='' aria-label='Marcel Nikolic' tabindex="6">
+        <img src='/photos/Photographers ID Photos/MarcelNikolic.jpg'>
+        <h2>Marcel Nikolic</h2>
+        <div class='skip'>Skip to content</div>
+      </a>
+      <p class='pho-local'>Berlin, Germany</p>
+      <p class='pho-phrase'>Finding the next big photo</p>
+      <p class='pho-rate'>$300/day</p>
+      <ul class='pho-tags'>
+        <li aria-label='tag travel'>#travel</li>
+        <li aria-label='tag architecture'>#architecture</li>
+      </ul>
+    </div>
+    </div>
+  </main>
+
+
+  <script src="script.js"></script>
 </body>
+
 </html>
