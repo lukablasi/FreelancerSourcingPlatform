@@ -140,6 +140,7 @@ h1 {
 
 .portrait ul li {
     padding: 5px;
+    font-weight: bold;
 }
 
 @media only screen and (max-width: 1400px) {
