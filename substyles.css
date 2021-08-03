@@ -6,3 +6,140 @@ header {
     margin-left: 30px;
     margin-top: 24px;
 }
+
+main {
+    margin-left: 30px;
+}
+
+#photographer-info {
+    background-color: #FAFAFA;
+    margin: 5%;
+    padding: 2px 5% 2px 5%;
+    position: relative;
+}
+
+#photographer-work {
+    width: 90%;
+    margin-left: 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 50px;
+}
+
+h1 {
+    color: #BF5138;
+    font-size: 64px;
+    font-weight: 400;
+    margin-bottom: 0px;
+}
+
+.localization {
+    color: #901C1C;
+    font-size: 24px;
+    margin-bottom: 28px;
+}
+
+.tagline {
+    color: #525252;
+    font-size: 18px;
+}
+
+#photographer-info ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+#photographer-info ul li a {
+    color: #901C1C;
+    text-decoration: none;
+    outline: none;
+    padding-right: 5px;
+    margin-right: 5px;
+    font-size: 18px;
+    border: 0.5px solid #C4C4C4;
+    border-radius: 15px;
+}
+
+#photographer-info button {
+    position: absolute;
+    left: 50%;
+    top: 50px;
+    font-size: 20px;
+    color: #fff;
+    background-color: #901C1C;
+    width: 170px;
+    height: 69px;
+    border-radius: 5px;
+}
+
+#photographer-info img {
+    position: absolute;
+    right: 162px;
+    top: 50px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info {
+    position: fixed;
+    bottom: 0;
+    right: 50px;
+    background-color: #DB8876;
+    color: #000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 24px;
+    padding: 5px;
+    width: 300px;
+}
+
+.order-filter {
+    font-weight: bold;
+    size: 18px;
+}
+
+.order-filter label {
+    color: #000;
+}
+
+.order-filter select {
+    color: #fff;
+    background-color: #901C1C;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.image-container {
+    width: 300px;
+    position: relative;
+}
+
+.image-container img, video {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.image-container .title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #901C1C;
+}
+
+.image-container .likes {
+    position: absolute;
+    font-size: 24px;
+    color: #901C1C;
+    right:15px;
+    bottom:0px;
+}
+
+.image-container .likes img {
+    width: 18px;
+    height: 18px;
+}

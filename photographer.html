@@ -5,7 +5,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Mimi Keel - FishEye</title>
+  <title>FishEye</title>
   <meta name="description" content="Find the best freelance photographers with us!">
 
   <link rel="stylesheet" href="substyles.css">
@@ -16,7 +16,22 @@
     <header role='banner'>
       <a class='logo' href='../index.html'><img alt='Fisheye home page' src='../photos/logo.jpg'></a>
     </header>
-    
+    <main>
+        <div id='photographer-info'></div>
+        <div class=order-filter>
+          <label for='order-by'>Order by</label>
+          <select id='order-by' name='order-by' aria-label='order by'>
+            
+              <option value='popularity'>Popularity</option>
+              <option value='date'>Date</option>
+              <option value='title'>Title</option>
+            
+          </select>
+        </div>
+        <div id='photographer-work'>
+          
+        </div>
+    </main>
 
 
   <script src="subscript.js"></script>
