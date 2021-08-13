@@ -71,6 +71,7 @@ h1 {
     width: 170px;
     height: 69px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 #photographer-info img {
@@ -142,4 +143,186 @@ h1 {
 .image-container .likes img {
     width: 18px;
     height: 18px;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 30px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #E5E5E5;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #E5E5E5;
+    margin: auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #901C1C;
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 75px;
+    cursor: pointer;
+  }
+  
+.slide img {
+    max-width: 100%;
+    height: 90%;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:#E5E5E5;
+}
+
+.slide video {
+    max-width: 100%;
+    width:100%;
+    height: 90%;
+    object-fit: fill;
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius:none;
+  background-color:#E5E5E5;
+}
+
+.slideCaption {
+    font-size: 24px;
+    color:#911C1C;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: #911C1C;
+  font-size: 48px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.next {
+  right: -50px;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: -50px;
+}
+
+#message-form {
+    height: 800px;
+    width: 650px;
+    background-color: #DB8876;
+    border-radius: 5px;
+    position: absolute;
+    top:30px;
+    right: 50%;
+    margin-right: -325px;
+    opacity:1;
+    z-index:100;
+}
+
+.form-background {
+    background-color:rgba(255,255,255,0.5);
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:1;
+    display: none;
+}
+
+#message-form h1 {
+    color:black;
+    padding: 15px;
+    margin-top: -5px;
+}
+
+.close-message {
+    color: #fff;
+    font-size: 5em;
+    font-weight:lighter;
+    position: absolute;
+    right: 20px;
+    top:0;
+    cursor: pointer;
+}
+
+#message-form label {
+    color: #312E2E;
+    font-size: 36px;
+    padding:20px;
+}
+
+#message-form input, textarea {
+    padding:10px;
+    font-size: 24px;
+    margin-left: 20px;
+    border-radius:5px;
+    width: 90%;
+}
+
+#message-form input[type=submit] {
+    background-color: #901C1C;
+    color: white;
+    width: 300px;
+    width: 170px;
+    height:69px;
+    margin-top: 30px;
+}
+
+@media only screen and (max-width: 992px) {
+    #photographer-work {
+        display: block;
+        margin: auto;
+        width: 100%;
+    }
+    #photographer-info {
+        background-color: inherit;
+    }
+    #photographer-info img {
+        right: 30px;
+    }
+    #photographer-info button {
+        position: fixed;
+        z-index: 2; 
+        margin-top: 85vh;
+        width: 400px;
+        margin-left: -200px;
+        font-size: 2em;
+        border-radius: 5px;
+    }
+    .image-container {
+        width: 90vw;
+        height: 500px;
+    }
+    .image-container img, video {
+        width: 90vw;
+        height: 400px;
+    }
+    .order-filter {
+        display: none;
+    }
 }

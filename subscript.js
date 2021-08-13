@@ -29,6 +29,7 @@ async function requestData() {
     const mainContainer = document.querySelector('main');
     const phoInfo = document.getElementById('photographer-info');
     const phoWork = document.getElementById('photographer-work');
+    const likesButtons = document.getElementsByClassName('likes-button');
 
     const name = document.createElement('h1');
     const details = document.createElement('div');
@@ -40,6 +41,8 @@ async function requestData() {
     const info = document.createElement('div');
     const likes = document.createElement('div');
     const rate = document.createElement('div');
+
+    
 
     phoInfo.appendChild(name);
     phoInfo.appendChild(details);
@@ -70,6 +73,7 @@ async function requestData() {
                 tagLink.innerHTML = '#' + tag;
             }
             contactMe.innerHTML = 'Contact Me';
+            contactMe.setAttribute('onclick', 'openForm( "  '+photographer.name+' " )');
             phoImage.setAttribute('src', '/photos/Photographers ID Photos/' + photographer.portrait);
             likes.setAttribute('id', 'total-likes');
             likes.innerHTML = '0';
@@ -82,8 +86,75 @@ async function requestData() {
     phrase.classList.add('tagline');
     let totalLikes = 0;
 
-    for (let picture of pictures) {
-        if(location.includes(picture.photographerId)) {
+    let filteredPictures = pictures.filter(item => location.includes(item.photographerId));
+    let sortedPictures = filteredPictures.sort((a, b) => b.likes - a.likes);
+    
+    document.getElementById('order-by').addEventListener('input', ev => {
+        let allPictures = document.querySelectorAll('.image-container');
+        for (let i of allPictures) {
+            i.remove()
+        }
+        let select = ev.target.value;
+        sortedPictures = filteredPictures.sort((a, b) => {
+            if (select == 'popularity') {
+                return b.likes - a.likes;
+            } else if (select == 'date') {              
+                return new Date(a.date) - new Date(b.date);               
+            } else if (select == 'title') {
+                return (a.title > b.title) - (a.title < b.title)
+            }
+        });
+        for (let picture of sortedPictures) {
+            
+                const imageContainer = document.createElement('div');
+                const imageLink = document.createElement('a');
+                const image = document.createElement('img');
+                const video = document.createElement('video');
+                const videoSource = document.createElement('source');
+                const imageTitle = document.createElement('p');
+                const imageLikes = document.createElement('p');
+    
+                phoWork.appendChild(imageContainer);
+                imageContainer.appendChild(imageLink);
+                if (picture.image) {
+                    imageLink.appendChild(image);
+                    
+                    image.setAttribute('src', '/photos/' + picture.photographerId + '/' + picture.image);
+                } else {
+                    imageLink.appendChild(video);
+                    video.appendChild(videoSource);
+                    videoSource.setAttribute('src', '/photos/' + picture.photographerId + '/' + picture.video);
+                }
+                imageContainer.appendChild(imageTitle);
+                imageContainer.appendChild(imageLikes);
+                imageLink.setAttribute('onclick', 'openModal();currentSlide(' + sortedPictures.indexOf(picture) + ')');
+                imageLink.classList.add('image-link');
+                imageContainer.classList.add('image-container');
+                
+                imageTitle.innerHTML = picture.title;
+                imageTitle.classList.add('title');
+                imageLikes.innerHTML = picture.likes + ' ' + '<img class="likes-button" src="heart.svg">';
+                imageLikes.classList.add('likes');
+                
+            
+        }
+        for (let likesButton of likesButtons) {
+            likesButton.addEventListener('click', e => {
+                parentElement = e.target.parentElement.innerHTML;
+                currentNumber = parentElement.split(' ')[0];
+                currentNumber = Number(currentNumber);
+                newNumber = currentNumber + 1;
+                parentElement = e.target.parentElement;
+                parentElement.innerHTML = newNumber + '<img class="likes-button" src="heart.svg">';
+                totalLikes = totalLikes + 1;
+                likes.innerHTML = totalLikes
+            })
+        }
+    })
+    
+
+    for (let picture of sortedPictures) {
+        
             const imageContainer = document.createElement('div');
             const imageLink = document.createElement('a');
             const image = document.createElement('img');
@@ -91,6 +162,7 @@ async function requestData() {
             const videoSource = document.createElement('source');
             const imageTitle = document.createElement('p');
             const imageLikes = document.createElement('p');
+
 
             phoWork.appendChild(imageContainer);
             imageContainer.appendChild(imageLink);
@@ -105,7 +177,7 @@ async function requestData() {
             }
             imageContainer.appendChild(imageTitle);
             imageContainer.appendChild(imageLikes);
-            imageLink.setAttribute('href', '#');
+            imageLink.setAttribute('onclick', 'openModal();currentSlide(' + sortedPictures.indexOf(picture) + ')');
             imageLink.classList.add('image-link');
             imageContainer.classList.add('image-container');
             
@@ -117,9 +189,9 @@ async function requestData() {
             totalLikes = totalLikes + picture.likes;
             likes.innerHTML = totalLikes;
             
-        }
+            
     }
-    const likesButtons = document.getElementsByClassName('likes-button');
+    
     for (let likesButton of likesButtons) {
         likesButton.addEventListener('click', e => {
             parentElement = e.target.parentElement.innerHTML;
@@ -136,3 +208,92 @@ async function requestData() {
 
 }
 requestData()
+
+
+function openModal() {
+    document.getElementById("myModal").style.display = "block";
+  }
+  
+
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+    const slide = document.querySelector('.slide');
+    const slideCaption = document.querySelector('.slideCaption');
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+    slide.remove();
+    slideCaption.remove();
+    prev.remove();
+    next.remove();
+  }
+
+  function currentSlide(n) {
+      const slides = document.querySelectorAll('.image-container');
+      const modalContent = document.querySelector('.modal-content');
+      
+      const slide = document.createElement('div');
+      slide.classList.add('slide');
+      const slideImage = document.createElement('img');
+      const slideVideo = document.createElement('video');
+      const slideVideoSource = document.createElement('source');
+      const caption = document.createElement('div');
+      const prev = document.createElement('a');
+      const next = document.createElement('a');
+      
+      modalContent.appendChild(slide);
+      modalContent.appendChild(caption);
+      modalContent.appendChild(prev);
+      modalContent.appendChild(next);
+
+      let slideSource = slides[n].children[0].children[0].src;
+
+      if (slideSource) {
+        slide.appendChild(slideImage);
+        
+        slideImage.setAttribute('src', slideSource)
+    } else {
+        slide.appendChild(slideVideo);
+        slideVideo.appendChild(slideVideoSource);
+        let source = slides[n].children[0].children[0].children[0].src;
+        slideVideoSource.setAttribute('src', source)
+    }
+
+      caption.innerHTML = slides[n].children[1].innerHTML;
+      caption.classList.add('slideCaption');
+      prev.classList.add('prev');
+      next.classList.add('next');
+      prev.outerHTML = `<a class="prev" onclick="prevSlide(${n})">&#10094;</a>`;
+      next.outerHTML = `<a class="next" onclick="nextSlide(${n})">&#10095;</a>`;
+  }
+
+  function prevSlide(n) {
+    closeModal();
+    openModal();
+    if (n > 0) {
+        currentSlide(n - 1)
+    } else {
+        currentSlide(n)
+    }
+    
+  }
+
+  function nextSlide(n) {
+    closeModal();
+    openModal();
+    const totalSlides = document.querySelectorAll('.image-container');
+    if (n < totalSlides.length - 1) {
+        currentSlide(n + 1)
+    } else {
+        currentSlide(n)
+    }
+  }
+
+  function closeMessage() {
+      document.querySelector('.form-background').style.display = 'none';
+  }
+
+  function openForm(photographer) {
+    document.querySelector('.form-background').style.display = 'block';
+    const header = document.getElementById('message-header');
+    header.innerHTML = 'Contact Me' + '<br>' + photographer;
+  }

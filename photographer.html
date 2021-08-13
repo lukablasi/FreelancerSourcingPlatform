@@ -21,19 +21,37 @@
         <div class=order-filter>
           <label for='order-by'>Order by</label>
           <select id='order-by' name='order-by' aria-label='order by'>
-            
+              
               <option value='popularity'>Popularity</option>
               <option value='date'>Date</option>
               <option value='title'>Title</option>
-            
+           
           </select>
         </div>
         <div id='photographer-work'>
           
         </div>
     </main>
-
-
+    <div id="myModal" class="modal">
+      <span class="close cursor" onclick="closeModal()">&times;</span>
+      <div class="modal-content">
+        </div>
+        </div>
+        <div class='form-background'>
+        <form id='message-form'>
+          <h1 id='message-header'>Contact Me</h1>
+          <span class="close-message" onclick="closeMessage()">&times;</span>
+          <label for='first-name'>First name</label><br>
+          <input type='text' id='first-name' name='first-name' aria-label='first name'><br>
+          <label for='last-name'>Last name</label><br>
+          <input type='text' id='last-name' name='last-name' aria-label='last name'><br>
+          <label for='email'>Email</label><br>
+          <input type='email' id='email' name='email' aria-label='email'><br>
+          <label for='your-message'>Your message</label><br>
+          <textarea type='text' id='your-message' name='your-message' aria-label='your message' rows='5'></textarea><br>
+          <input type='submit' value='Send' aria-label='send'>
+        </form>
+        </div>
   <script src="subscript.js"></script>
 </body>
 
