@@ -38,9 +38,9 @@
         </div>
         </div>
         <div class='form-background'>
-        <form id='message-form'>
+        <form id='message-form' onsubmit="return false">
           <h1 id='message-header'>Contact Me</h1>
-          <span class="close-message" onclick="closeMessage()">&times;</span>
+          <span aria-label='close modal' class="close-message" onclick="closeMessage()">&times;</span>
           <label for='first-name'>First name</label><br>
           <input type='text' id='first-name' name='first-name' aria-label='first name'><br>
           <label for='last-name'>Last name</label><br>
@@ -49,7 +49,7 @@
           <input type='email' id='email' name='email' aria-label='email'><br>
           <label for='your-message'>Your message</label><br>
           <textarea type='text' id='your-message' name='your-message' aria-label='your message' rows='5'></textarea><br>
-          <input type='submit' value='Send' aria-label='send'>
+          <input type='submit' value='Send' aria-label='send' onclick='submitForm()'>
         </form>
         </div>
   <script src="subscript.js"></script>

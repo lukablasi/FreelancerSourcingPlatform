@@ -118,11 +118,12 @@ async function requestData() {
                 imageContainer.appendChild(imageLink);
                 if (picture.image) {
                     imageLink.appendChild(image);
-                    
+                    image.setAttribute('alt', picture.title + ', closeup view');
                     image.setAttribute('src', '/photos/' + picture.photographerId + '/' + picture.image);
                 } else {
                     imageLink.appendChild(video);
                     video.appendChild(videoSource);
+                    video.setAttribute('title', picture.title + ', closeup view');
                     videoSource.setAttribute('src', '/photos/' + picture.photographerId + '/' + picture.video);
                 }
                 imageContainer.appendChild(imageTitle);
@@ -135,7 +136,7 @@ async function requestData() {
                 imageTitle.classList.add('title');
                 imageLikes.innerHTML = picture.likes + ' ' + '<img class="likes-button" src="heart.svg">';
                 imageLikes.classList.add('likes');
-                
+                imageLikes.setAttribute('aria-label', 'likes');
             
         }
         for (let likesButton of likesButtons) {
@@ -168,11 +169,12 @@ async function requestData() {
             imageContainer.appendChild(imageLink);
             if (picture.image) {
                 imageLink.appendChild(image);
-                
+                image.setAttribute('alt', picture.title + ', closeup view');
                 image.setAttribute('src', '/photos/' + picture.photographerId + '/' + picture.image);
             } else {
                 imageLink.appendChild(video);
                 video.appendChild(videoSource);
+                video.setAttribute('title', picture.title + ', closeup view');
                 videoSource.setAttribute('src', '/photos/' + picture.photographerId + '/' + picture.video);
             }
             imageContainer.appendChild(imageTitle);
@@ -185,6 +187,7 @@ async function requestData() {
             imageTitle.classList.add('title');
             imageLikes.innerHTML = picture.likes + ' ' + '<img class="likes-button" src="heart.svg">';
             imageLikes.classList.add('likes');
+            imageLikes.setAttribute('aria-label', 'likes');
 
             totalLikes = totalLikes + picture.likes;
             likes.innerHTML = totalLikes;
@@ -230,6 +233,8 @@ function openModal() {
   function currentSlide(n) {
       const slides = document.querySelectorAll('.image-container');
       const modalContent = document.querySelector('.modal-content');
+      modalContent.setAttribute('aria-label', 'image closeup view');
+      modalContent.setAttribute('aria-modal', 'true');
       
       const slide = document.createElement('div');
       slide.classList.add('slide');
@@ -250,20 +255,22 @@ function openModal() {
       if (slideSource) {
         slide.appendChild(slideImage);
         
-        slideImage.setAttribute('src', slideSource)
+        slideImage.setAttribute('src', slideSource);
+        slideImage.setAttribute('alt',slides[n].children[1].innerHTML)
     } else {
         slide.appendChild(slideVideo);
         slideVideo.appendChild(slideVideoSource);
         let source = slides[n].children[0].children[0].children[0].src;
-        slideVideoSource.setAttribute('src', source)
+        slideVideoSource.setAttribute('src', source);
+        slideVideo.setAttribute('controls', 'controls');
     }
 
       caption.innerHTML = slides[n].children[1].innerHTML;
       caption.classList.add('slideCaption');
       prev.classList.add('prev');
       next.classList.add('next');
-      prev.outerHTML = `<a class="prev" onclick="prevSlide(${n})">&#10094;</a>`;
-      next.outerHTML = `<a class="next" onclick="nextSlide(${n})">&#10095;</a>`;
+      prev.outerHTML = `<a aria-label='previous image' class="prev" onclick="prevSlide(${n})">&#10094;</a>`;
+      next.outerHTML = `<a aria-label='next imag' class="next" onclick="nextSlide(${n})">&#10095;</a>`;
   }
 
   function prevSlide(n) {
@@ -296,4 +303,11 @@ function openModal() {
     document.querySelector('.form-background').style.display = 'block';
     const header = document.getElementById('message-header');
     header.innerHTML = 'Contact Me' + '<br>' + photographer;
+  }
+
+  function submitForm() {
+    firstName = document.getElementById('first-name').value;
+    lastName = document.getElementById('last-name').value;
+    email = document.getElementById('email').value;
+    console.log(`${firstName}, ${lastName}, ${email}`)
   }
