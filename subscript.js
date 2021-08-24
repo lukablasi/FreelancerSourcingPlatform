@@ -71,6 +71,8 @@ async function requestData() {
 
                 tagLink.setAttribute('href', '#');
                 tagLink.innerHTML = '#' + tag;
+                tagLink.classList.add('category-title');
+                tagLink.setAttribute('id', tag);
             }
             contactMe.innerHTML = 'Contact Me';
             contactMe.setAttribute('onclick', 'openForm( "  '+photographer.name+' " )');
@@ -137,6 +139,10 @@ async function requestData() {
                 imageLikes.innerHTML = picture.likes + ' ' + '<img class="likes-button" src="heart.svg">';
                 imageLikes.classList.add('likes');
                 imageLikes.setAttribute('aria-label', 'likes');
+
+                for (let tag of picture.tags) {
+                    imageContainer.classList.add(tag)
+                }
             
         }
         for (let likesButton of likesButtons) {
@@ -192,7 +198,9 @@ async function requestData() {
             totalLikes = totalLikes + picture.likes;
             likes.innerHTML = totalLikes;
             
-            
+            for (let tag of picture.tags) {
+                imageContainer.classList.add(tag)
+            }
     }
     
     for (let likesButton of likesButtons) {
@@ -311,3 +319,7 @@ function openModal() {
     email = document.getElementById('email').value;
     console.log(`${firstName}, ${lastName}, ${email}`)
   }
+
+  //filter
+
+ 
