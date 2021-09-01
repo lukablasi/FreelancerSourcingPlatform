@@ -1,9 +1,9 @@
-//API request
+// API request
 const api = '/data.json';
 
 function makeRequest() {
     return new Promise((resolve, reject) => {
-        let apiRequest = new XMLHttpRequest();
+    let apiRequest = new XMLHttpRequest();
         apiRequest.open('GET', api);
         apiRequest.send();
         apiRequest.onreadystatechange = () => {
@@ -11,7 +11,7 @@ function makeRequest() {
                 if (apiRequest.status === 200) {
                     resolve(JSON.parse(apiRequest.response));
                 } else {
-                    console.log('Oooops, something went wrong');
+                    reject('Oooops, something went wrong');
                 }
             }
         }
@@ -100,4 +100,4 @@ function changeActivePosition(activeItem){
         categoryTitle[i].classList.remove('active');
     }
     activeItem.classList.add('active');
-};
+}

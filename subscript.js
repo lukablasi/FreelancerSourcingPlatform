@@ -11,7 +11,7 @@ function makeRequest() {
                 if (apiRequest.status === 200) {
                     resolve(JSON.parse(apiRequest.response));
                 } else {
-                    console.log('Oooops, something went wrong');
+                    reject('Oooops, something went wrong');
                 }
             }
         }
@@ -147,10 +147,10 @@ async function requestData() {
         }
         for (let likesButton of likesButtons) {
             likesButton.addEventListener('click', e => {
-                parentElement = e.target.parentElement.innerHTML;
-                currentNumber = parentElement.split(' ')[0];
+                let parentElement = e.target.parentElement.innerHTML;
+                let currentNumber = parentElement.split(' ')[0];
                 currentNumber = Number(currentNumber);
-                newNumber = currentNumber + 1;
+                let newNumber = currentNumber + 1;
                 parentElement = e.target.parentElement;
                 parentElement.innerHTML = newNumber + '<img class="likes-button" src="heart.svg">';
                 totalLikes = totalLikes + 1;
@@ -205,17 +205,17 @@ async function requestData() {
     
     for (let likesButton of likesButtons) {
         likesButton.addEventListener('click', e => {
-            parentElement = e.target.parentElement.innerHTML;
-            currentNumber = parentElement.split(' ')[0];
+            let parentElement = e.target.parentElement.innerHTML;
+            let currentNumber = parentElement.split(' ')[0];
             currentNumber = Number(currentNumber);
-            newNumber = currentNumber + 1;
+            let newNumber = currentNumber + 1;
             parentElement = e.target.parentElement;
             parentElement.innerHTML = newNumber + '<img class="likes-button" src="heart.svg">';
             totalLikes = totalLikes + 1;
             likes.innerHTML = totalLikes
         })
     }
-    
+    createFilter()
 
 }
 requestData()
@@ -281,6 +281,7 @@ function openModal() {
       next.outerHTML = `<a aria-label='next imag' class="next" onclick="nextSlide(${n})">&#10095;</a>`;
   }
 
+  // eslint-disable-next-line no-unused-vars
   function prevSlide(n) {
     closeModal();
     openModal();
@@ -292,6 +293,7 @@ function openModal() {
     
   }
 
+  // eslint-disable-next-line no-unused-vars
   function nextSlide(n) {
     closeModal();
     openModal();
@@ -303,23 +305,55 @@ function openModal() {
     }
   }
 
+  // eslint-disable-next-line no-unused-vars
   function closeMessage() {
       document.querySelector('.form-background').style.display = 'none';
   }
 
+  // eslint-disable-next-line no-unused-vars
   function openForm(photographer) {
     document.querySelector('.form-background').style.display = 'block';
     const header = document.getElementById('message-header');
     header.innerHTML = 'Contact Me' + '<br>' + photographer;
   }
 
+  // eslint-disable-next-line no-unused-vars
   function submitForm() {
-    firstName = document.getElementById('first-name').value;
-    lastName = document.getElementById('last-name').value;
-    email = document.getElementById('email').value;
+    let firstName = document.getElementById('first-name').value;
+    let lastName = document.getElementById('last-name').value;
+    let email = document.getElementById('email').value;
     console.log(`${firstName}, ${lastName}, ${email}`)
   }
 
   //filter
 
- 
+function createFilter() {
+  
+    const categoryTitle = document.querySelectorAll('.category-title');
+      const allCategoryPosts = document.getElementsByClassName('image-container');
+  
+      for(let i = 0; i < categoryTitle.length; i++){
+          categoryTitle[i].addEventListener('click', filterPosts.bind(this, categoryTitle[i]));
+      }
+  
+      function filterPosts(item){
+          changeActivePosition(item);
+          for(let i = 0; i < allCategoryPosts.length; i++){
+              if(allCategoryPosts[i].classList.contains(item.attributes.id.value)){
+                  allCategoryPosts[i].style.display = "block";
+              } else {
+                  allCategoryPosts[i].style.display = "none";
+              }
+          }
+      }
+  
+      function changeActivePosition(activeItem){
+          for(let i = 0; i < categoryTitle.length; i++){
+              categoryTitle[i].classList.remove('active');
+          }
+          activeItem.classList.add('active');
+      }
+  
+  
+    }
+  
