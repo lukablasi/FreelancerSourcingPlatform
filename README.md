@@ -4,9 +4,19 @@ A website where you can find freelance photographers, sort results, see their of
 
 ![](https://github.com/lukablasi/FreelancerSourcingPlatform/blob/master/screenshots/mainpage.PNG)
 
-![](https://github.com/lukablasi/FreelancerSourcingPlatform/blob/master/screenshots/singlepage.PNG)
+![](https://github.com/lukablasi/FreelancerSourcingPlatform/blob/master/screenshots/singelpage.PNG)
 
 ![](https://github.com/lukablasi/FreelancerSourcingPlatform/blob/master/screenshots/gallery.PNG)
 
 ![](https://github.com/lukablasi/FreelancerSourcingPlatform/blob/master/screenshots/modalbox.PNG)
 
+<h2>Technologies Used</h2>
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+ </ul>
+ 
+ <h2>Developed By</h2>
+ Lukasz Milcz
+ https://www.linkedin.com/in/lukablasi/
