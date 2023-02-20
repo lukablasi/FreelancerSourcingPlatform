@@ -1,5 +1,5 @@
 // API request
-const api = '/data.json';
+const api = 'https://github.com/lukablasi/FreelancerSourcingPlatform/blob/master/data.json';
 
 function makeRequest() {
     return new Promise((resolve, reject) => {
