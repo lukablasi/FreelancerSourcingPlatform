@@ -1,5 +1,5 @@
 // API request
-const api = './FreelancerSourcingPlatform/data.json';
+const api = './data.json';
 
 function makeRequest() {
     return new Promise((resolve, reject) => {
