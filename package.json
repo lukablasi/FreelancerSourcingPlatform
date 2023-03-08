@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/lukablasi/fisheye/issues"
   },
-  "homepage": "https://github.com/lukablasi/fisheye#readme",
+  "homepage": ".",
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
